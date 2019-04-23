@@ -1,0 +1,66 @@
+<div class="container">
+	<div class="row justify-content-center mb-2">
+		<h4>{{headerText}}</h4>
+	</div>
+	<div class="row justify-content-center">
+		<span class="text-center">
+			<i class="material-icons md-light" style="font-size: 36px; color: rgba(0, 0, 0, 0.26);">description</i>
+			<br/>
+			<small style="color: rgba(0, 0, 0, 0.26);">1. Unit Details</small>
+		</span>
+		<span class="text-center mx-5">
+			<i class="material-icons md-36" style="font-size: 36px;">supervisor_account</i>
+			<br/>
+			<small>2. Social Media</small>
+		</span>
+		<span class="text-center">
+			<i class="material-icons md-36" style="font-size: 36px; color: rgba(0, 0, 0, 0.26);">device_hub</i>
+			<br/>
+			<small style="color: rgba(0, 0, 0, 0.26);">3. LRS</small>
+		</span>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-10">
+			<form (submit)="submitUnitForm()">
+				<div class="form-group">
+					<input type="checkbox" name="twitter" [checked]="twitterEnabled" (click)="toggleHashtagField()">
+					<label for="twitter">Twitter</label>
+
+					<input type="text" name="twitter-hashtag" [(ngModel)]="unitFormModelStep2.twitter" *ngIf="twitterEnabled == true" placeholder="Twitter Hashtags (comma separated)" />
+				</div>
+
+				<div class="form-group">
+					<input type="checkbox" name="trello" [(ngModel)]="unitFormModelStep2.trello.selected" />
+					<label for="trello">Trello</label>
+
+					<input type="checkbox" name="trello-required"
+					[(ngModel)]="unitFormModelStep2.trello.required" />
+					<label for="trello-required">Require users to register a trello board</label>
+				</div>
+
+				<div class="form-group">
+					<input type="checkbox" name="slack" [(ngModel)]="unitFormModelStep2.slack.selected" />
+					<label for="slack">Slack</label>
+
+					<input type="checkbox" name="slack-required"
+					[(ngModel)]="unitFormModelStep2.slack.required" />
+					<label for="slack-required">Require users to register slack channel(s)</label>
+				</div>
+
+				<div class="form-group">
+					<input type="checkbox" name="github"
+					[(ngModel)]="unitFormModelStep2.github.selected" />
+					<label for="github">Github</label>
+
+					<input type="checkbox" name="github-required"
+					[(ngModel)]="unitFormModelStep2.github.required" />
+					<label for="github-required">Require users to register a git repo</label>
+				</div>
+
+				<button type="submit" class="btn btn-sm btn-secondary">
+					Proceed to Data Storage 
+				</button>
+			</form>
+		</div>
+	</div>
+</div>

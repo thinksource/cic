@@ -1,0 +1,101 @@
+<div class="container">
+	<div class="row justify-content-center mb-2">
+		<h4>{{headerText}}</h4>
+	</div>
+	<div class="row justify-content-center">
+		<span class="text-center">
+			<i class="material-icons md-light" style="font-size: 36px;">description</i>
+			<br/>
+			<small>1. Unit Details</small>
+		</span>
+		<span class="text-center mx-5">
+			<i class="material-icons md-36" style="font-size: 36px; color: rgba(0, 0, 0, 0.26);">supervisor_account</i>
+			<br/>
+			<small style="color: rgba(0, 0, 0, 0.26);">2. Social Media</small>
+		</span>
+		<span class="text-center">
+			<i class="material-icons md-36" style="font-size: 36px; color: rgba(0, 0, 0, 0.26);">device_hub</i>
+			<br/>
+			<small style="color: rgba(0, 0, 0, 0.26);">3. LRS</small>
+		</span>
+	</div>
+	<div class="row justify-content-center mb-5">
+		<!--<h4>Step 1: Create your Unit</h4>-->
+
+		<div class="col-10">
+			<form (submit)="submitUnitForm()">
+				<!-- Unit title/name -->
+				<input type="text" id="unit-name" name="name" class="form-control input-sm my-2"
+				[(ngModel)]="unitFormModelStep1.name"
+				placeholder="Unit Name" />
+				<!--<small class="text-alert" *ngIf="formErrors.name">
+					{{formErrors.name}}
+				</small>-->
+				<!-- ************** -->
+
+				<!-- Unit code -->
+				<input type="text" id="unit-code" name="code" class="form-control input-sm my-2"
+				[(ngModel)]="unitFormModelStep1.code"
+				placeholder="Unit Code (e.g. UBM123)" />
+				<!-- ************* -->
+
+				<!-- Unit Semester -->
+				<input type="text" id="unit-semester" name="semester" class="form-control input-sm my-2"
+				[(ngModel)]="unitFormModelStep1.semester"
+				placeholder="Unit Semester or Teaching Period" />
+				<!-- ************** -->
+
+				<!-- Unit Description -->
+				<input type="textarea" id="unit-description" name="description" class="form-control input-sm my-2"
+				[(ngModel)]="unitFormModelStep1.description"
+				placeholder="Enter a Description - What is this Unit about?" />
+
+				<!-- TODO: Add a Date Picker -->
+				<div class="input-group">
+					<input class="form-control input-sm my-2" placeholder="Start Date"
+						name="start-date" [(ngModel)]="unitFormModelStep1.startDate" ngbDatepicker #d="ngbDatepicker"
+						(focus)="d.toggle()">
+					<!-- <div class="input-group-append"> -->
+						<!-- <button class="btn btn-sm btn-outline-secondary" (click)="d.toggle()" type="button" style="height: 39px; padding-top: 6px; padding-bottom: 6px; margin-top: 8px; margin-bottom: 8px;">
+							<i class="material-icons" style="margin-left: -216px;">
+                    			calendar_today
+                  			</i>
+						</button> -->
+					<!-- </div> -->
+				</div>
+
+
+				<!--<input type="text" id="unit-start-date" name="start-date" class="form-control input-sm my-2"
+				[(ngModel)]="unitFormModelStep1.startDate"
+				placeholder="Unit Start Date" /> -->
+
+				<div class="input-group">
+					<input class="form-control input-sm my-2" placeholder="End Date"
+						name="end-date" [(ngModel)]="unitFormModelStep1.endDate" ngbDatepicker #de="ngbDatepicker"
+						(click)="de.toggle()">
+					<!-- <div class="input-group-append"> -->
+						<!-- <button class="btn btn-sm btn-outline-secondary" (click)="d.toggle()" type="button" style="height: 39px; padding-top: 6px; padding-bottom: 6px; margin-top: 8px; margin-bottom: 8px;">
+							<i class="material-icons" style="margin-left: -216px;">
+                    			calendar_today
+                  			</i>
+						</button> -->
+					<!-- </div> -->
+				</div>
+
+
+				<!-- TODO: Add a Date Picker --
+				<input type="text" id="unit-end-date" name="end-date" class="form-control input-sm my-2"
+				[(ngModel)]="unitFormModelStep1.endDate"
+				placeholder="Unit End Date" /> -->
+
+				<input type="textarea" id="ethics-statement" name="ethics" class="form-control input-sm my-2"
+				[(ngModel)]="unitFormModelStep1.ethicsStatement"
+				placeholder="Enter an Ethics Statement (optional)" />
+
+				<button type="submit" class="btn btn-sm btn-secondary">
+					Proceed to Social Media Setup
+				</button>
+			</form>
+		</div>
+	</div>
+</div>

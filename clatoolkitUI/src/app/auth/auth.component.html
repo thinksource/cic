@@ -1,0 +1,44 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-6" *ngIf="(!showLogin && !showRegister)">
+			<a href="#" onclick="return false;" (click)="showLoginForm()"><h5>Login/AAF login</h5></a>
+			<a href="#" onclick="return false;" (click)="showRegisterForm()"><h5>Register</h5></a>
+		</div>
+
+		<div class="col-4" *ngIf="showLogin">
+			<a href="#" onclick="return false;" (click)="backForm()" style="float: right;">Back</a>
+			<h4>Login</h4>
+			<form (submit)="loginSubmit()">
+				<input type="text"  class="form-control input-sm" 
+				[(ngModel)]="formModel.email" name="email"
+				placeholder="Email" 
+				/>
+				<input type="password" class="form-control input-sm"
+				[(ngModel)]="formModel.password" name="password" 
+				placeholder="Password" />
+
+				<button type="submit" class="btn btn-sm btn-secondary" (click)="loginSubmit(false)">Log In</button>
+			</form>
+				<button type="submit" class="btn btn-sm btn-secondary" (click)="loginSubmit(true)">AAF Login In</button>
+
+
+		</div>
+		<div class="col-6" *ngIf="showRegister">
+			<a href="#" onclick="return false;" (click)="backForm()" style="float: right;">Back</a>
+			<h4>Sign Up</h4>
+			<form (submit)="registerSubmit()">
+				<input type="text" name="register-email" class="form-control input-sm"
+				[(ngModel)]="formModelRegister.email"
+				placeholder="Email" />
+				<input type="password" name="register-password" class="form-control input-sm"
+				[(ngModel)]="formModelRegister.password" 
+				placeholder="Password" />
+				<input type="password" name="register-password-conf" class="form-control input-sm"
+				[(ngModel)]="formModelRegister.passwordConf" 
+				placeholder="Password Confirmation" />
+
+				<button type="submit" class="btn btn-sm btn-secondary" (click)="registerSubmit()">Register</button>
+			</form>
+		</div>
+	</div>
+</div>
