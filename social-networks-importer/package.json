@@ -4,7 +4,8 @@
   "description": "social network importer",
   "main": "graphql.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node graphql.js"
   },
   "author": "chezecz",
   "license": "MIT",
@@ -14,7 +15,7 @@
     "@octokit/rest": "^16.1.0",
     "@slack/client": "^4.8.0",
     "adl-xapiwrapper": "^0.2.3",
-    "dotenv": "^6.1.0",
+    "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",
     "graphql": "^14.0.2",

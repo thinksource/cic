@@ -1,16 +1,19 @@
 var MongoClient = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectId;
+
 var _db;
 
 require("dotenv").load();
 
 module.exports = {
 	connectToDb: function (callback) {
-		MongoClient.connect(process.env.MONGO_URI, function( err, dbClient) {
-			if (err) console.error("ERROR: ", err + ". MONGO_URL: " + process.env.MONGO_URI);
+		 MongoClient.connect(process.env.MONGODB_URI, { useNewUrlParser: true }, function (err, dbClient) {
+			if (err) console.error("ERROR: ", err + ". MONGO_URL: " + process.env.MONGO_URI);		
 			_db = dbClient.db("clatoolkit-backend");
 			return callback( err );
 		});
+
+		// _db = mongoclient.db("clatoolkit-backend");
 	},
 
 	getDb: function () {
