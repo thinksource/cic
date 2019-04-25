@@ -1,4 +1,4 @@
-var ADL = require('adl-xapiwrapper');
+var ADL = require('xapiwrapper-node');
 const db = require('../mongodbutils').getDb();
 require('dotenv').load();
 
