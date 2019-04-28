@@ -13,6 +13,7 @@ import * as passportTrello from "passport-trello";
 import * as passportSlack from "passport-slack";
 import * as passportGithub from "passport-github2";
 import * as passportTwitter from "passport-twitter";
+import * as passportGoogle from "passport-google-oauth";
 
 
 const LocalStrategy = passportLocal.Strategy;
@@ -21,6 +22,7 @@ const TrelloStrategy = passportTrello.Strategy;
 const SlackStrategy = passportSlack.Strategy;
 const GithubStrategy = passportGithub.Strategy;
 const TwitterStrategy = passportTwitter.Strategy;
+const GoogleStrategy = passportGoogle;
 
 passport.serializeUser<any, any>((user, done) => {
   done(undefined, user.id);
@@ -166,6 +168,20 @@ export const setupStrategies = (passport: any) => {
       passReqToCallback: true,
     }, (req: any, accessToken: any, refreshToken: any, profile: any, cb: any) => {
       processSocial("github", accessToken, refreshToken, profile, cb, req);
+    }));
+  }
+  /**
+   * Google Sign In
+   * Retrives and save google credentials for user, for clatoolkit data scraping later
+   */
+  if (process.env.GOOGLE_APP_ID && process.env.GOOGLE_APP_SECRET) { 
+    passport.use(new GoogleStrategy({
+      clientID: process.env.GOOGLE_APP_ID,
+      clientSecret: process.env.GOOGLE_APP_SECRET,
+      callbackURL: process.env.HOST + "/social/google/callback",
+      passReqToCallback: true,
+    }, (req: any, accessToken: any, refreshToken: any, profile: any, cb: any) => {
+      processSocial("google", accessToken, refreshToken, profile, cb, req);
     }));
   }
 };

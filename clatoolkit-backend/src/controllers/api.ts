@@ -17,7 +17,8 @@ export let getPlatformOpts = (req: Request, res: Response) => {
   const optsMap: any = {
     "trello": getTrelloBoards,
     "slack": getSlackChannels,
-    "github": getGithubRepos
+    "github": getGithubRepos,
+    "google": getGooglePlus,
   };
 
   optsMap[req.params.platform](req, res);
@@ -138,6 +139,27 @@ export let getFacebook = (req: Request, res: Response, next: NextFunction) => {
     res.render("api/facebook", {
       profile: results,
       title: "Facebook API",
+    });
+  });
+};
+
+
+export let getGooglePlus = (req: Request, res: Response) => {
+  User.findOne({ email: req.user.email }, (err, user: UserModel) => {
+    const userToken = user.tokens.find(tok => tok.platform == "google").accessToken;
+    const googleProfileApiEndpoint = `https://www.googleapis.com/auth/userinfo.profile?token=${userToken}`;
+
+    request(googleProfileApiEndpoint, (err, response, body) => {
+      // Slack Specific
+      if (err || JSON.parse(body).ok == false  || response.statusCode != 200) {
+        console.error("Error grabbing google profile. error: " + err + ". Status code: " + response.statusCode);
+      }
+
+      const profile = JSON.parse(body).profile;
+
+      // console.log("SLACK CHANNELS. RETURNING: ", channelsResponse);
+
+      return res.json({ opts: profile });
     });
   });
 };

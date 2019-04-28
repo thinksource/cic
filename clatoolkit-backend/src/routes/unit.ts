@@ -4,6 +4,8 @@ import * as Auth from "../config/jwtAuth.middleware";
 
 import * as unitController from "../controllers/unit";
 
+import * as userController from "../controllers/user";
+
 class Unit {
   public router: Router;
   public constructor() {
@@ -16,7 +18,7 @@ class Unit {
     this.router.post("/:id", Auth.JwtAuthorized, unitController.updateUnit);
     this.router.post("/:id/register", Auth.JwtAuthorized, unitController.postSignUp);
     this.router.get("/:id/import", Auth.JwtAuthorized, unitController.importNow);
-    // this.router.get("/units", Auth.JwtAuthorized, userController.getUnits);
+    this.router.get("/units", Auth.JwtAuthorized, userController.getUnits);
 
   }
 }

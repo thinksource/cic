@@ -56,6 +56,14 @@ class Oauth {
 
       res.redirect(returnURL);
     });
+
+    this.router.get("/google", Auth.JwtAuthorized, passport.authenticate("google"));
+    this.router.get("/google/callback", passport.authenticate("google"), (req: Request, res: Response) => {
+      const returnURL = req.session.clatkReturnTo;
+      delete req.session.clatkReturnTo;
+
+      res.redirect(returnURL);
+    });
     // this.router.get("slack/channels", Auth.JwtAuthorized, apiController.getSlackChannels);
   
 
