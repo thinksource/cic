@@ -13,7 +13,7 @@ import * as passportTrello from "passport-trello";
 import * as passportSlack from "passport-slack";
 import * as passportGithub from "passport-github2";
 import * as passportTwitter from "passport-twitter";
-import * as passportGoogle from "passport-google-authcode2";
+import * as passportGoogle from "passport-google-oauth";
 
 
 const LocalStrategy = passportLocal.Strategy;
