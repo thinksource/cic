@@ -13,7 +13,7 @@ import * as passportTrello from "passport-trello";
 import * as passportSlack from "passport-slack";
 import * as passportGithub from "passport-github2";
 import * as passportTwitter from "passport-twitter";
-import * as passportGoogle from "passport-google-oauth";
+import * as passportGoogle from "passport-google-authcode2";
 
 
 const LocalStrategy = passportLocal.Strategy;
@@ -22,7 +22,7 @@ const TrelloStrategy = passportTrello.Strategy;
 const SlackStrategy = passportSlack.Strategy;
 const GithubStrategy = passportGithub.Strategy;
 const TwitterStrategy = passportTwitter.Strategy;
-const GoogleStrategy = passportGoogle;
+const GoogleStrategy = passportGoogle.Strategy;
 
 passport.serializeUser<any, any>((user, done) => {
   done(undefined, user.id);
