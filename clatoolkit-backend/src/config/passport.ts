@@ -22,7 +22,7 @@ const TrelloStrategy = passportTrello.Strategy;
 const SlackStrategy = passportSlack.Strategy;
 const GithubStrategy = passportGithub.Strategy;
 const TwitterStrategy = passportTwitter.Strategy;
-const GoogleStrategy = passportGoogle.Strategy;
+const GoogleStrategy = passportGoogle.OAuth2Strategy;
 
 passport.serializeUser<any, any>((user, done) => {
   done(undefined, user.id);
