@@ -68,6 +68,8 @@ Make sure to add the oauth app key/secrets to .env!
  ## Install and Configure Webserver (nginx)
  ```sudo apt-get install nginx```
 
+
+### Example:
  Example server config (http only):
  ```
  server {
