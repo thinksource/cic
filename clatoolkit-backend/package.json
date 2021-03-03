@@ -59,7 +59,7 @@
     "passport-slack": "0.0.7",
     "passport-trello": "^0.1.5",
     "passport-twitter": "^1.0.4",
-    "pug": "^2.0.3",
+    "pug": "^3.0.1",
     "request": "^2.88.0"
   },
   "devDependencies": {
