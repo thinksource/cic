@@ -16,7 +16,7 @@
     "@slack/client": "^4.8.0",
     "adl-xapiwrapper": "^0.2.3",
     "dotenv": "^6.2.0",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-graphql": "^0.7.1",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
